@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Cities from '../src/pages/Cities';
 import Restaurants from '../src/pages/Restaurants';
+import Detail from '../src/pages/Detail';
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,7 @@ const Router = () => {
             <Stack.Navigator screenOptions={{headerShown: false}}>
                 <Stack.Screen name="Cities" component={Cities} />
                 <Stack.Screen name="Restaurants" component={Restaurants} />
+                <Stack.Screen name="Detail" component={Detail} />
             </Stack.Navigator>
 
         </NavigationContainer>

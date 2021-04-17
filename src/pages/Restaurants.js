@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { SafeAreaView, Text, Image, StyleSheet, Dimensions, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { SafeAreaView, Text, Image, StyleSheet, Dimensions, View, TouchableOpacity } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 
 import Cliniclist from '../main.json';
@@ -11,8 +11,10 @@ const Restaurants = (props) => {
 
     const selectedCity = props.route.params.selected;
 
-    const renderItem = ({item}) => {
-        return <ClinicCard data={item}/>
+    const renderItem = ({ item }) => {
+        return <TouchableOpacity onPress={() => props.navigation.navigate('Detail', {selected: item})}>
+            <ClinicCard data={item} />
+        </TouchableOpacity>
     }
 
     useEffect(() => {
@@ -24,9 +26,12 @@ const Restaurants = (props) => {
 
     return (
         <SafeAreaView>
-            <FlatList 
+            <Text>{selectedCity.value}</Text>
+            <FlatList
                 data={myClinics}
                 renderItem={renderItem}
+                keyExtractor={(_, index) => index.toString()}
+                
             />
 
         </SafeAreaView>
@@ -42,11 +47,11 @@ const styles = StyleSheet.create({
     textContainer: {
         padding: 10
     },
-    text:{
+    text: {
         fontSize: 18,
         fontWeight: 'bold'
     },
-    textScore:{
+    textScore: {
         fontStyle: 'italic'
     }
 })
