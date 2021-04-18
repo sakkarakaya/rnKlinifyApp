@@ -1,1 +1,2 @@
 # rnKlinifyApp
+Cities -> Clinics -> Details
