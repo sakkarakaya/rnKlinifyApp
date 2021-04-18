@@ -26,7 +26,14 @@ const Restaurants = (props) => {
 
     return (
         <SafeAreaView>
-            <Text>{selectedCity.value}</Text>
+            <View style={styles.textContainer}>
+                <Text style={styles.textHeader}>{selectedCity.value}</Text>
+                <Text style={styles.textResult}>{myClinics.length} result
+                {myClinics.length==1 ? null : <Text>s </Text>} 
+                found
+                </Text>
+            </View>
+            
             <FlatList
                 data={myClinics}
                 renderItem={renderItem}
@@ -41,17 +48,22 @@ const Restaurants = (props) => {
 export default Restaurants
 
 const styles = StyleSheet.create({
-    image: {
-        height: Dimensions.get('window').height * 0.25,
+    textContainer:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        margin: 5,
+        padding: 5
     },
-    textContainer: {
-        padding: 10
-    },
-    text: {
+    textHeader: {
+        
         fontSize: 18,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textAlign: 'center'
     },
-    textScore: {
-        fontStyle: 'italic'
+    textResult: {
+       textAlign: 'right',
+       
     }
+  
+        
 })

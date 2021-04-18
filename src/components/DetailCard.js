@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Text } from 'react-native';
+import { SafeAreaView, StyleSheet, Text } from 'react-native';
 
 // {"review_id":1189,
 // "Name":"AMEOS Hospital Alfeld",
@@ -10,18 +10,25 @@ import { SafeAreaView, Text } from 'react-native';
 
 const DetailCard = (props) => {
     return (
-        <SafeAreaView>
-            
+        <SafeAreaView style={styles.container}>
+
             <Text>{props.data.review_id}</Text>
             <Text>{props.data.Name}</Text>
             <Text>{props.data.Sterne}</Text>
             <Text>{props.data.Datum}</Text>
             <Text>{props.data.Deutsch}</Text>
             <Text>{props.data.Von}</Text>
-            
-           
+
+
         </SafeAreaView>
     )
 }
 
 export default DetailCard
+
+const styles = StyleSheet.create({
+    container: {
+        padding: 10,
+        margin: 10
+    }
+})
