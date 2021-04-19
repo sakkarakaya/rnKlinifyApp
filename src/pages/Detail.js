@@ -11,14 +11,35 @@ const Detail = (props) => {
 
     const [review, setReviews] = useState([]);
 
-    const renderItem = ({item}) => {
-        return <DetailCard data={item}/>
+    const renderItem = ({ item }) => {
+        return <DetailCard data={item} />
     }
     const selectedClinic = props.route.params.selected;
 
-   const MyClinic = () => {
-       return <ClinicCard data={Cliniclist[selectedClinic.id]}/>
-   }
+    const MyClinic = () => {
+        return (
+            <View>
+
+
+                <ClinicCard data={Cliniclist[selectedClinic.id]} />
+                
+                <Text style={styles.reviews}> Reviews </Text>
+
+            </View>
+        )
+    }
+
+    const FlatListItemSeparator = () => {
+        return (
+            <View
+                style={{
+                    height: 1,
+                    width: "100%",
+                    backgroundColor: "#000",
+                }}
+            />
+        );
+    }
 
     useEffect(() => {
         const myReviews = Reviews[selectedClinic.id]
@@ -32,13 +53,15 @@ const Detail = (props) => {
                 <Text style={styles.textHeader}>Details</Text>
                 <Text>{review.length} reviews found</Text>
             </View>
-            
+
             <FlatList
                 data={review}
                 renderItem={renderItem}
                 keyExtractor={(_, index) => index.toString()}
                 ListHeaderComponent={MyClinic}
+                ItemSeparatorComponent={FlatListItemSeparator}
             />
+
         </SafeAreaView>
 
     )
@@ -47,17 +70,22 @@ const Detail = (props) => {
 export default Detail
 
 const styles = StyleSheet.create({
-    textContainer:{
+    textContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         margin: 5,
         padding: 5
     },
     textHeader: {
-        
+
         fontSize: 18,
         fontWeight: 'bold',
         textAlign: 'center'
     },
-      
+    reviews:{
+        fontSize: 17,
+        fontWeight: 'bold',
+        textDecorationLine: 'underline'
+    }
+
 })

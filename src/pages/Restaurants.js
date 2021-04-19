@@ -28,9 +28,9 @@ const Restaurants = (props) => {
         <SafeAreaView>
             <View style={styles.textContainer}>
                 <Text style={styles.textHeader}>{selectedCity.value}</Text>
-                <Text style={styles.textResult}>{myClinics.length} result
-                {myClinics.length==1 ? null : <Text>s </Text>} 
-                found
+                <Text style={styles.textResult}>{myClinics.length} result 
+                {myClinics.length==1 ? <Text> </Text> : <Text>s </Text>} 
+                 found
                 </Text>
             </View>
             
